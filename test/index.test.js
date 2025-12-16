@@ -1,4 +1,4 @@
-const { capitalize, reverse } = require("../src/index.js");
+const { capitalize, reverse, isPalindrome } = require("../src/index.js");
 
 describe("capitalize", () => {
   test("should capitalize first letter of a normal string", () => {
@@ -67,5 +67,51 @@ describe("reverse", () => {
   test("should handle string with numbers", () => {
     expect(reverse("123")).toBe("321");
     expect(reverse("abc123")).toBe("321cba");
+  });
+});
+
+describe("isPalindrome", () => {
+  test("should return true for palindrome strings", () => {
+    expect(isPalindrome("racecar")).toBe(true);
+    expect(isPalindrome("madam")).toBe(true);
+    expect(isPalindrome("level")).toBe(true);
+    expect(isPalindrome("radar")).toBe(true);
+    expect(isPalindrome("a")).toBe(true);
+    expect(isPalindrome("aa")).toBe(true);
+  });
+
+  test("should return false for non-palindrome strings", () => {
+    expect(isPalindrome("hello")).toBe(false);
+    expect(isPalindrome("world")).toBe(false);
+    expect(isPalindrome("javascript")).toBe(false);
+    expect(isPalindrome("abc")).toBe(false);
+  });
+
+  test("should handle empty string", () => {
+    expect(isPalindrome("")).toBe(true);
+  });
+
+  test("should be case-sensitive", () => {
+    expect(isPalindrome("Racecar")).toBe(false);
+    expect(isPalindrome("Madam")).toBe(false);
+    expect(isPalindrome("racecar")).toBe(true);
+  });
+
+  test("should handle strings with spaces", () => {
+    expect(isPalindrome("hello world")).toBe(false);
+    expect(isPalindrome("a b a")).toBe(true);
+    expect(isPalindrome("a b c")).toBe(false);
+  });
+
+  test("should handle strings with special characters", () => {
+    expect(isPalindrome("a!a")).toBe(true);
+    expect(isPalindrome("a@b@a")).toBe(true);
+    expect(isPalindrome("hello!")).toBe(false);
+  });
+
+  test("should handle strings with numbers", () => {
+    expect(isPalindrome("121")).toBe(true);
+    expect(isPalindrome("12321")).toBe(true);
+    expect(isPalindrome("123")).toBe(false);
   });
 });

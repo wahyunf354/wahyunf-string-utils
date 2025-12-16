@@ -9,7 +9,12 @@ function reverse(text) {
   return text.split("").reverse().join("");
 }
 
+function isPalindrome(text) {
+  return text === reverse(text);
+}
+
 module.exports = {
   capitalize,
   reverse,
+  isPalindrome,
 };
