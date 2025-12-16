@@ -99,7 +99,8 @@ describe("isPalindrome", () => {
 
   test("should handle strings with spaces", () => {
     expect(isPalindrome("hello world")).toBe(false);
-    expect(isPalindrome("a b a")).toBe(false);
+    expect(isPalindrome("a b a")).toBe(true);
+    expect(isPalindrome("a b c")).toBe(false);
   });
 
   test("should handle strings with special characters", () => {
