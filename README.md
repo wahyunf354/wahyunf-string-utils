@@ -1,4 +1,4 @@
-# string-utils-wahyunf
+# @wahyunf/string-utils
 
 Utility library untuk manipulasi string yang sederhana dan mudah digunakan.
 
@@ -7,13 +7,13 @@ Utility library untuk manipulasi string yang sederhana dan mudah digunakan.
 Install package menggunakan npm:
 
 ```bash
-npm install string-utils-wahyunf
+npm install @wahyunf/string-utils
 ```
 
 atau menggunakan yarn:
 
 ```bash
-yarn add string-utils-wahyunf
+yarn add @wahyunf/string-utils
 ```
 
 ## 🚀 Usage
@@ -21,10 +21,10 @@ yarn add string-utils-wahyunf
 Import fungsi yang dibutuhkan:
 
 ```javascript
-const { capitalize, reverse } = require("string-utils-wahyunf");
+const { capitalize, reverse } = require("@wahyunf/string-utils");
 
 // atau menggunakan ES6 modules
-import { capitalize, reverse } from "string-utils-wahyunf";
+import { capitalize, reverse } from "@wahyunf/string-utils";
 ```
 
 ## 📚 API Documentation
@@ -48,7 +48,7 @@ Mengkapitalisasi huruf pertama dari sebuah string.
 **Examples:**
 
 ```javascript
-const { capitalize } = require("string-utils-wahyunf");
+const { capitalize } = require("@wahyunf/string-utils");
 
 capitalize("hello"); // 'Hello'
 capitalize("world"); // 'World'
@@ -77,7 +77,7 @@ Membalikkan urutan karakter dalam sebuah string.
 **Examples:**
 
 ```javascript
-const { reverse } = require("string-utils-wahyunf");
+const { reverse } = require("@wahyunf/string-utils");
 
 reverse("hello"); // 'olleh'
 reverse("world"); // 'dlrow'
@@ -92,7 +92,7 @@ reverse(""); // ''
 ## 💡 Complete Example
 
 ```javascript
-const { capitalize, reverse } = require("string-utils-wahyunf");
+const { capitalize, reverse } = require("@wahyunf/string-utils");
 
 // Capitalize example
 const name = "wahyu";
