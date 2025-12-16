@@ -1,4 +1,11 @@
-const { capitalize, reverse, isPalindrome } = require("../src/index.js");
+const {
+  capitalize,
+  reverse,
+  isPalindrome,
+  truncate,
+  camelCase,
+  snakeCase,
+} = require("../src/index.js");
 
 describe("capitalize", () => {
   test("should capitalize first letter of a normal string", () => {
@@ -113,5 +120,71 @@ describe("isPalindrome", () => {
     expect(isPalindrome("121")).toBe(true);
     expect(isPalindrome("12321")).toBe(true);
     expect(isPalindrome("123")).toBe(false);
+  });
+});
+
+describe("truncate", () => {
+  test("should truncate string if longer than length", () => {
+    expect(truncate("hello world", 5)).toBe("hello...");
+  });
+
+  test("should not truncate string if shorter than length", () => {
+    expect(truncate("hello", 10)).toBe("hello");
+  });
+
+  test("should not truncate string if equal to length", () => {
+    expect(truncate("hello", 5)).toBe("hello");
+  });
+
+  test("should throw error if input is not string", () => {
+    expect(() => truncate(123, 5)).toThrow("Input harus string");
+  });
+
+  test("should throw error if length is not number", () => {
+    expect(() => truncate("hello", "5")).toThrow("Panjang harus number");
+  });
+
+  test("should throw error if length is negative", () => {
+    expect(() => truncate("hello", -1)).toThrow("Panjang tidak boleh negatif");
+  });
+});
+
+describe("camelCase", () => {
+  test("should convert string to camelCase", () => {
+    expect(camelCase("hello world")).toBe("helloWorld");
+    expect(camelCase("Hello World")).toBe("helloWorld");
+    expect(camelCase("JAVA script")).toBe("javaScript");
+  });
+
+  test("should handle string with multiple spaces", () => {
+    expect(camelCase("hello   world")).toBe("helloWorld");
+  });
+
+  test("should handle string with special characters", () => {
+    expect(camelCase("foo bar baz")).toBe("fooBarBaz");
+  });
+
+  test("should throw error if input is not string", () => {
+    expect(() => camelCase(123)).toThrow("Input harus string");
+  });
+});
+
+describe("snakeCase", () => {
+  test("should convert string to snake_case", () => {
+    expect(snakeCase("hello world")).toBe("hello_world");
+    expect(snakeCase("Hello World")).toBe("hello_world");
+    expect(snakeCase("JAVA script")).toBe("java_script");
+  });
+
+  test("should handle string with multiple spaces", () => {
+    expect(snakeCase("hello   world")).toBe("hello_world");
+  });
+
+  test("should handle string with special characters", () => {
+    expect(snakeCase("foo bar baz")).toBe("foo_bar_baz");
+  });
+
+  test("should throw error if input is not string", () => {
+    expect(() => snakeCase(123)).toThrow("Input harus string");
   });
 });

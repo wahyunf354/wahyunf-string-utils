@@ -1,3 +1,8 @@
+/**
+ * Capitalize string
+ * @param {string} text
+ * @returns {string}
+ */
 function capitalize(text) {
   if (typeof text !== "string") {
     throw new Error("Input harus string");
@@ -5,16 +10,75 @@ function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+/**
+ * Reverse string
+ * @param {string} text
+ * @returns {string}
+ */
 function reverse(text) {
   return text.split("").reverse().join("");
 }
 
+/**
+ * Check if string is palindrome
+ * @param {string} text
+ * @returns {boolean}
+ */
 function isPalindrome(text) {
   return text === reverse(text);
+}
+
+/**
+ * Truncate string if longer than length
+ * @param {string} text
+ * @param {number} length
+ * @returns {string}
+ */
+function truncate(text, length) {
+  if (typeof text !== "string") {
+    throw new Error("Input harus string");
+  }
+  if (typeof length !== "number") {
+    throw new Error("Panjang harus number");
+  }
+  if (length < 0) {
+    throw new Error("Panjang tidak boleh negatif");
+  }
+  if (text.length <= length) {
+    return text;
+  }
+  return text.slice(0, length) + "...";
+}
+
+/**
+ * Mengubah string menjadi camelCase
+ * @param {string} text
+ * @returns {string}
+ */
+function camelCase(text) {
+  if (typeof text !== "string") {
+    throw new Error("Input harus string");
+  }
+  return text.toLowerCase().replace(/\s+(.)/g, (_, char) => char.toUpperCase());
+}
+
+/**
+ * Mengubah string menjadi snake_case
+ * @param {string} text
+ * @returns {string}
+ */
+function snakeCase(text) {
+  if (typeof text !== "string") {
+    throw new Error("Input harus string");
+  }
+  return text.toLowerCase().replace(/\s+/g, "_");
 }
 
 module.exports = {
   capitalize,
   reverse,
   isPalindrome,
+  truncate,
+  camelCase,
+  snakeCase,
 };

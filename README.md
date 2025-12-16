@@ -21,10 +21,24 @@ yarn add @wahyunf/string-utils
 Import fungsi yang dibutuhkan:
 
 ```javascript
-const { capitalize, reverse } = require("@wahyunf/string-utils");
+const {
+  capitalize,
+  reverse,
+  isPalindrome,
+  truncate,
+  camelCase,
+  snakeCase,
+} = require("@wahyunf/string-utils");
 
 // atau menggunakan ES6 modules
-import { capitalize, reverse } from "@wahyunf/string-utils";
+import {
+  capitalize,
+  reverse,
+  isPalindrome,
+  truncate,
+  camelCase,
+  snakeCase,
+} from "@wahyunf/string-utils";
 ```
 
 ## 📚 API Documentation
@@ -89,26 +103,138 @@ reverse("123"); // '321'
 reverse(""); // ''
 ```
 
-## 💡 Complete Example
+### `isPalindrome(text)`
+
+Mengecek apakah sebuah string adalah palindrome (dibaca sama dari depan maupun belakang).
+
+**Parameters:**
+
+- `text` (string, required): String yang akan dicek
+
+**Returns:**
+
+- (boolean): `true` jika palindrome, `false` jika bukan
+
+**Examples:**
 
 ```javascript
-const { capitalize, reverse } = require("@wahyunf/string-utils");
+const { isPalindrome } = require("@wahyunf/string-utils");
+
+isPalindrome("racecar"); // true
+isPalindrome("madam"); // true
+isPalindrome("hello"); // false
+isPalindrome("12321"); // true
+```
+
+### `truncate(text, length)`
+
+Memotong string jika melebihi panjang tertentu dan menambahkan "..." di akhir.
+
+**Parameters:**
+
+- `text` (string, required): String yang akan dipotong
+- `length` (number, required): Panjang maksimal string
+
+**Returns:**
+
+- (string): String yang sudah dipotong (jika perlu)
+
+**Throws:**
+
+- `Error`: Jika input bukan string, panjang bukan number, atau panjang negatif
+
+**Examples:**
+
+```javascript
+const { truncate } = require("@wahyunf/string-utils");
+
+truncate("hello world", 5); // 'hello...'
+truncate("hello", 10); // 'hello'
+truncate("javascript is awesome", 10); // 'javascript...'
+```
+
+### `camelCase(text)`
+
+Mengubah string menjadi format camelCase.
+
+**Parameters:**
+
+- `text` (string, required): String yang akan diubah
+
+**Returns:**
+
+- (string): String dalam format camelCase
+
+**Throws:**
+
+- `Error`: Jika input bukan string
+
+**Examples:**
+
+```javascript
+const { camelCase } = require("@wahyunf/string-utils");
+
+camelCase("hello world"); // 'helloWorld'
+camelCase("Hello World"); // 'helloWorld'
+camelCase("JAVA script"); // 'javaScript'
+```
+
+### `snakeCase(text)`
+
+Mengubah string menjadi format snake_case.
+
+**Parameters:**
+
+- `text` (string, required): String yang akan diubah
+
+**Returns:**
+
+- (string): String dalam format snake_case
+
+**Throws:**
+
+- `Error`: Jika input bukan string
+
+**Examples:**
+
+```javascript
+const { snakeCase } = require("@wahyunf/string-utils");
+
+snakeCase("hello world"); // 'hello_world'
+snakeCase("Hello World"); // 'hello_world'
+snakeCase("JAVA script"); // 'java_script'
+```
+
+## 💡 Complete Example
+
+````javascript
+const {
+  capitalize,
+  reverse,
+  isPalindrome,
+  truncate,
+  camelCase,
+  snakeCase
+} = require("@wahyunf/string-utils");
 
 // Capitalize example
 const name = "wahyu";
-const capitalizedName = capitalize(name);
-console.log(capitalizedName); // 'Wahyu'
+console.log(capitalize(name)); // 'Wahyu'
 
 // Reverse example
 const text = "Hello World";
-const reversedText = reverse(text);
-console.log(reversedText); // 'dlroW olleH'
+console.log(reverse(text)); // 'dlroW olleH'
 
-// Combine functions
-const input = "javascript";
-const result = capitalize(reverse(input));
-console.log(result); // 'Tpircsavaj'
-```
+// Palindrome check
+console.log(isPalindrome("racecar")); // true
+
+// Truncate
+console.log(truncate("This is a long sentence", 10)); // 'This is a ...'
+
+// Camel & Snake Case
+console.log(camelCase("hello world")); // 'helloWorld'
+console.log(snakeCase("hello world")); // 'hello_world'
+
 
 ## 🧪 Testing
 
@@ -116,7 +242,7 @@ Package ini menggunakan Jest untuk testing. Untuk menjalankan test:
 
 ```bash
 npm test
-```
+````
 
 ## 📝 License
 
