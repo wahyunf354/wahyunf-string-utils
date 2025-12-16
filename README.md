@@ -1,6 +1,19 @@
 # @wahyunf/string-utils
 
-Utility library untuk manipulasi string yang sederhana dan mudah digunakan.
+![License](https://img.shields.io/npm/l/@wahyunf/string-utils?style=flat-square)
+![Version](https://img.shields.io/npm/v/@wahyunf/string-utils?style=flat-square)
+![Downloads](https://img.shields.io/npm/dm/@wahyunf/string-utils?style=flat-square)
+
+**@wahyunf/string-utils** adalah utility library ringan untuk manipulasi string di JavaScript. Dirancang untuk sederhana, mudah digunakan, dan tanpa dependensi berat.
+
+## ✨ Features
+
+- **Capitalize**: Mengkapitalisasi huruf pertama sebuah string.
+- **Reverse**: Membalikkan urutan karakter string.
+- **Palindrome Check**: Memeriksa apakah string adalah palindrome.
+- **Truncate**: Memotong string panjang dengan ellipsis.
+- **CamelCase**: Mengubah string menjadi format camelCase.
+- **SnakeCase**: Mengubah string menjadi format snake_case.
 
 ## 📦 Installation
 
@@ -10,15 +23,13 @@ Install package menggunakan npm:
 npm install @wahyunf/string-utils
 ```
 
-atau menggunakan yarn:
+Atau menggunakan yarn:
 
 ```bash
 yarn add @wahyunf/string-utils
 ```
 
-## 🚀 Usage
-
-Import fungsi yang dibutuhkan:
+## � Usage
 
 ```javascript
 const {
@@ -30,232 +41,45 @@ const {
   snakeCase,
 } = require("@wahyunf/string-utils");
 
-// atau menggunakan ES6 modules
-import {
-  capitalize,
-  reverse,
-  isPalindrome,
-  truncate,
-  camelCase,
-  snakeCase,
-} from "@wahyunf/string-utils";
-```
+// Capitalize
+console.log(capitalize("hello world")); // "Hello world"
 
-## 📚 API Documentation
+// Reverse
+console.log(reverse("hello")); // "olleh"
 
-### `capitalize(text)`
-
-Mengkapitalisasi huruf pertama dari sebuah string.
-
-**Parameters:**
-
-- `text` (string, required): String yang akan dikapitalisasi
-
-**Returns:**
-
-- (string): String dengan huruf pertama yang sudah dikapitalisasi
-
-**Throws:**
-
-- `Error`: Jika input bukan string
-
-**Examples:**
-
-```javascript
-const { capitalize } = require("@wahyunf/string-utils");
-
-capitalize("hello"); // 'Hello'
-capitalize("world"); // 'World'
-capitalize("javascript"); // 'Javascript'
-capitalize("HELLO"); // 'HELLO'
-capitalize(""); // ''
-capitalize("a"); // 'A'
-
-// Error handling
-capitalize(123); // Error: Input harus string
-capitalize(null); // Error: Input harus string
-```
-
-### `reverse(text)`
-
-Membalikkan urutan karakter dalam sebuah string.
-
-**Parameters:**
-
-- `text` (string, required): String yang akan dibalik
-
-**Returns:**
-
-- (string): String yang sudah dibalik urutannya
-
-**Examples:**
-
-```javascript
-const { reverse } = require("@wahyunf/string-utils");
-
-reverse("hello"); // 'olleh'
-reverse("world"); // 'dlrow'
-reverse("javascript"); // 'tpircsavaj'
-reverse("racecar"); // 'racecar' (palindrome)
-reverse("hello world"); // 'dlrow olleh'
-reverse("a@b#c"); // 'c#b@a'
-reverse("123"); // '321'
-reverse(""); // ''
-```
-
-### `isPalindrome(text)`
-
-Mengecek apakah sebuah string adalah palindrome (dibaca sama dari depan maupun belakang).
-
-**Parameters:**
-
-- `text` (string, required): String yang akan dicek
-
-**Returns:**
-
-- (boolean): `true` jika palindrome, `false` jika bukan
-
-**Examples:**
-
-```javascript
-const { isPalindrome } = require("@wahyunf/string-utils");
-
-isPalindrome("racecar"); // true
-isPalindrome("madam"); // true
-isPalindrome("hello"); // false
-isPalindrome("12321"); // true
-```
-
-### `truncate(text, length)`
-
-Memotong string jika melebihi panjang tertentu dan menambahkan "..." di akhir.
-
-**Parameters:**
-
-- `text` (string, required): String yang akan dipotong
-- `length` (number, required): Panjang maksimal string
-
-**Returns:**
-
-- (string): String yang sudah dipotong (jika perlu)
-
-**Throws:**
-
-- `Error`: Jika input bukan string, panjang bukan number, atau panjang negatif
-
-**Examples:**
-
-```javascript
-const { truncate } = require("@wahyunf/string-utils");
-
-truncate("hello world", 5); // 'hello...'
-truncate("hello", 10); // 'hello'
-truncate("javascript is awesome", 10); // 'javascript...'
-```
-
-### `camelCase(text)`
-
-Mengubah string menjadi format camelCase.
-
-**Parameters:**
-
-- `text` (string, required): String yang akan diubah
-
-**Returns:**
-
-- (string): String dalam format camelCase
-
-**Throws:**
-
-- `Error`: Jika input bukan string
-
-**Examples:**
-
-```javascript
-const { camelCase } = require("@wahyunf/string-utils");
-
-camelCase("hello world"); // 'helloWorld'
-camelCase("Hello World"); // 'helloWorld'
-camelCase("JAVA script"); // 'javaScript'
-```
-
-### `snakeCase(text)`
-
-Mengubah string menjadi format snake_case.
-
-**Parameters:**
-
-- `text` (string, required): String yang akan diubah
-
-**Returns:**
-
-- (string): String dalam format snake_case
-
-**Throws:**
-
-- `Error`: Jika input bukan string
-
-**Examples:**
-
-```javascript
-const { snakeCase } = require("@wahyunf/string-utils");
-
-snakeCase("hello world"); // 'hello_world'
-snakeCase("Hello World"); // 'hello_world'
-snakeCase("JAVA script"); // 'java_script'
-```
-
-## 💡 Complete Example
-
-````javascript
-const {
-  capitalize,
-  reverse,
-  isPalindrome,
-  truncate,
-  camelCase,
-  snakeCase
-} = require("@wahyunf/string-utils");
-
-// Capitalize example
-const name = "wahyu";
-console.log(capitalize(name)); // 'Wahyu'
-
-// Reverse example
-const text = "Hello World";
-console.log(reverse(text)); // 'dlroW olleH'
-
-// Palindrome check
+// Palindrome
 console.log(isPalindrome("racecar")); // true
 
 // Truncate
-console.log(truncate("This is a long sentence", 10)); // 'This is a ...'
+console.log(truncate("This is a long sentence", 10)); // "This is a ..."
 
-// Camel & Snake Case
-console.log(camelCase("hello world")); // 'helloWorld'
-console.log(snakeCase("hello world")); // 'hello_world'
+// Case Conversion
+console.log(camelCase("hello world")); // "helloWorld"
+console.log(snakeCase("Hello World")); // "hello_world"
+```
 
+## 📚 Documentation
+
+Dokumentasi lengkap mengenai API dan penggunaan detail dapat dilihat di:
+
+👉 **[API Documentation](docs/api.md)**
 
 ## 🧪 Testing
 
-Package ini menggunakan Jest untuk testing. Untuk menjalankan test:
+Jalankan unit test menggunakan Jest:
 
 ```bash
 npm test
-````
-
-## 📝 License
-
-MIT © Wahyu Nur Fadillah
+```
 
 ## 🤝 Contributing
 
-Contributions, issues, dan feature requests dipersilakan! Jangan ragu untuk membuka issue atau pull request.
+Kontribusi sangat diterima! Silakan buka [Issues](https://github.com/wahyunf354/wahyunf-string-utils/issues) atau [Pull Request](https://github.com/wahyunf354/wahyunf-string-utils/pulls) untuk perbaikan atau penambahan fitur.
 
-## 📧 Author
+## � License
 
-**Wahyu Nur Fadillah**
+MIT © [Wahyu Nur Fadillah](https://github.com/wahyunf354)
 
 ---
 
-Jika package ini membantu Anda, jangan lupa untuk ⭐ star repository ini!
+_Dibuat dengan ❤️ oleh Wahyu Nur Fadillah_
