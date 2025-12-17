@@ -86,6 +86,18 @@ function kebabCase(text) {
   return text.toLowerCase().replace(/\s+/g, "-");
 }
 
+/**
+ * Menghapus spasi di awal dan akhir, serta menormalkan multiple spaces menjadi 1 spasi
+ * @param {string} text
+ * @returns {string}
+ */
+function trimAll(text) {
+  if (typeof text !== "string") {
+    throw new Error("Input harus string");
+  }
+  return text.trim().replace(/\s+/g, " ");
+}
+
 module.exports = {
   capitalize,
   reverse,
@@ -94,4 +106,5 @@ module.exports = {
   camelCase,
   snakeCase,
   kebabCase,
+  trimAll,
 };

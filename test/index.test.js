@@ -6,6 +6,7 @@ const {
   camelCase,
   snakeCase,
   kebabCase,
+  trimAll,
 } = require("../src/index.js");
 
 describe("capitalize", () => {
@@ -259,5 +260,50 @@ describe("kebabCase", () => {
     expect(() => kebabCase({})).toThrow("Input harus string");
     expect(() => kebabCase(true)).toThrow("Input harus string");
     expect(() => kebabCase(false)).toThrow("Input harus string");
+  });
+});
+
+describe("trimAll", () => {
+  test("should remove leading and trailing spaces and normalize multiple spaces to single space", () => {
+    expect(trimAll("  hello world  ")).toBe("hello world");
+    expect(trimAll("  hello   world  ")).toBe("hello world");
+    expect(trimAll("hello world")).toBe("hello world");
+    expect(trimAll("  hello  world  test  ")).toBe("hello world test");
+  });
+
+  test("should handle string with tabs and newlines", () => {
+    expect(trimAll("hello\tworld")).toBe("hello world");
+    expect(trimAll("hello\nworld")).toBe("hello world");
+    expect(trimAll("hello\r\nworld")).toBe("hello world");
+    expect(trimAll("hello\t\tworld")).toBe("hello world");
+    expect(trimAll("hello\n\nworld")).toBe("hello world");
+  });
+
+  test("should handle empty string", () => {
+    expect(trimAll("")).toBe("");
+  });
+
+  test("should handle string without spaces", () => {
+    expect(trimAll("hello")).toBe("hello");
+    expect(trimAll("helloworld")).toBe("helloworld");
+  });
+
+  test("should handle string with only spaces", () => {
+    expect(trimAll("   ")).toBe("");
+    expect(trimAll(" ")).toBe("");
+  });
+
+  test("should handle string with mixed whitespace", () => {
+    expect(trimAll("  hello\t\tworld  ")).toBe("hello world");
+    expect(trimAll("  hello\n\nworld  ")).toBe("hello world");
+    expect(trimAll("  hello \t world  ")).toBe("hello world");
+  });
+
+  test("should throw error for non-string input", () => {
+    expect(() => trimAll(123)).toThrow("Input harus string");
+    expect(() => trimAll(null)).toThrow("Input harus string");
+    expect(() => trimAll(undefined)).toThrow("Input harus string");
+    expect(() => trimAll([])).toThrow("Input harus string");
+    expect(() => trimAll({})).toThrow("Input harus string");
   });
 });
