@@ -7,6 +7,7 @@ const {
   snakeCase,
   kebabCase,
   trimAll,
+  slugify,
 } = require("../src/index.js");
 
 describe("capitalize", () => {
@@ -305,5 +306,55 @@ describe("trimAll", () => {
     expect(() => trimAll(undefined)).toThrow("Input harus string");
     expect(() => trimAll([])).toThrow("Input harus string");
     expect(() => trimAll({})).toThrow("Input harus string");
+  });
+});
+
+describe("slugify", () => {
+  test("should convert string to slug", () => {
+    expect(slugify("hello world")).toBe("hello-world");
+    expect(slugify("Hello World")).toBe("hello-world");
+    expect(slugify("JAVA script")).toBe("java-script");
+    expect(slugify("FOO BAR")).toBe("foo-bar");
+  });
+
+  test("should handle string with multiple spaces", () => {
+    expect(slugify("hello   world")).toBe("hello-world");
+    expect(slugify("foo    bar    baz")).toBe("foo-bar-baz");
+    expect(slugify("a  b  c")).toBe("a-b-c");
+  });
+
+  test("should handle string with special characters", () => {
+    expect(slugify("foo bar baz")).toBe("foo-bar-baz");
+    expect(slugify("foo@bar@baz")).toBe("foo-bar-baz");
+    expect(slugify("foo#bar#baz")).toBe("foo-bar-baz");
+  });
+
+  test("should handle string with numbers", () => {
+    expect(slugify("123")).toBe("123");
+    expect(slugify("abc123")).toBe("abc-123");
+    expect(slugify("123abc")).toBe("123-abc");
+  });
+
+  test("should handle empty string", () => {
+    expect(slugify("")).toBe("");
+  });
+
+  test("should handle string with only special characters", () => {
+    expect(slugify("!@#$%^")).toBe("");
+    expect(slugify("   ")).toBe("");
+  });
+
+  test("should handle string with leading and trailing special characters", () => {
+    expect(slugify("-hello world-")).toBe("hello-world");
+    expect(slugify("!hello world!")).toBe("hello-world");
+    expect(slugify(" @ hello world @ ")).toBe("hello-world");
+  });
+
+  test("should throw error for non-string input", () => {
+    expect(() => slugify(123)).toThrow("Input harus string");
+    expect(() => slugify(null)).toThrow("Input harus string");
+    expect(() => slugify(undefined)).toThrow("Input harus string");
+    expect(() => slugify({})).toThrow("Input harus string");
+    expect(() => slugify([])).toThrow("Input harus string");
   });
 });

@@ -98,6 +98,23 @@ function trimAll(text) {
   return text.trim().replace(/\s+/g, " ");
 }
 
+/**
+ * Mengubah string menjadi slug
+ * @param {string} text
+ * @returns {string}
+ */
+function slugify(text) {
+  if (typeof text !== "string") {
+    throw new Error("Input harus string");
+  }
+  return text
+    .toLowerCase()
+    .replace(/([a-z])([0-9])/g, "$1-$2")
+    .replace(/([0-9])([a-z])/g, "$1-$2")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 module.exports = {
   capitalize,
   reverse,
@@ -107,4 +124,5 @@ module.exports = {
   snakeCase,
   kebabCase,
   trimAll,
+  slugify,
 };
