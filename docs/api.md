@@ -249,3 +249,31 @@ slugify("foo bar baz"); // 'foo-bar-baz'
 slugify("JAVA script"); // 'java-script'
 slugify("abc123"); // 'abc-123'
 ```
+
+## `isEmpty(text)`
+
+Mengecek apakah sebuah string kosong atau hanya berisi whitespace (spasi, tab, newline).
+
+**Parameters:**
+
+- `text` (string, required): String yang akan dicek
+
+**Returns:**
+
+- (boolean): `true` jika string kosong atau hanya berisi whitespace, `false` jika tidak
+
+**Throws:**
+
+- `Error`: Jika input bukan string
+
+**Examples:**
+
+```javascript
+const { isEmpty } = require("@wahyunf/string-utils");
+
+isEmpty(""); // true
+isEmpty("   "); // true
+isEmpty("\t\n"); // true
+isEmpty("hello"); // false
+isEmpty("  hello  "); // false
+```

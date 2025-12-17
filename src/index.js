@@ -115,6 +115,13 @@ function slugify(text) {
     .replace(/^-+|-+$/g, "");
 }
 
+function isEmpty(text) {
+  if (typeof text !== "string") {
+    throw new Error("Input harus string");
+  }
+  return text.trim().length === 0;
+}
+
 module.exports = {
   capitalize,
   reverse,
@@ -125,4 +132,5 @@ module.exports = {
   kebabCase,
   trimAll,
   slugify,
+  isEmpty,
 };

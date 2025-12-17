@@ -17,6 +17,7 @@
 - **KebabCase**: Mengubah string menjadi format kebab-case
 - **TrimAll**: Menghapus spasi di awal dan akhir string dan mengganti spasi ganda menjadi satu spasi.
 - **Slugify**: Mengubah string menjadi format slug.
+- **IsEmpty**: Mengecek apakah string kosong atau hanya berisi spasi.
 
 ## 📦 Installation
 
@@ -66,6 +67,11 @@ console.log(trimAll("   hello world   ")); // "hello world"
 
 // Slugify
 console.log(slugify("Hello World")); // "hello-world"
+
+// IsEmpty
+console.log(isEmpty("")); // true
+console.log(isEmpty("   ")); // true
+console.log(isEmpty("hello")); // false
 ```
 
 ## 📚 Documentation

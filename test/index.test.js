@@ -8,6 +8,7 @@ const {
   kebabCase,
   trimAll,
   slugify,
+  isEmpty,
 } = require("../src/index.js");
 
 describe("capitalize", () => {
@@ -356,5 +357,39 @@ describe("slugify", () => {
     expect(() => slugify(undefined)).toThrow("Input harus string");
     expect(() => slugify({})).toThrow("Input harus string");
     expect(() => slugify([])).toThrow("Input harus string");
+  });
+});
+
+describe("isEmpty", () => {
+  test("should return true for empty string", () => {
+    expect(isEmpty("")).toBe(true);
+    expect(isEmpty(" ")).toBe(true);
+    expect(isEmpty("   ")).toBe(true);
+    expect(isEmpty("\t")).toBe(true);
+    expect(isEmpty("\n")).toBe(true);
+    expect(isEmpty("\r\n")).toBe(true);
+    expect(isEmpty(" \t\n ")).toBe(true);
+  });
+
+  test("should return false for non-empty string", () => {
+    expect(isEmpty("hello")).toBe(false);
+    expect(isEmpty("hello ")).toBe(false);
+    expect(isEmpty(" hello")).toBe(false);
+    expect(isEmpty("hello  ")).toBe(false);
+    expect(isEmpty(" a ")).toBe(false);
+    expect(isEmpty("123")).toBe(false);
+  });
+
+  test("should throw error for non-string input", () => {
+    expect(() => isEmpty(null)).toThrow("Input harus string");
+    expect(() => isEmpty(undefined)).toThrow("Input harus string");
+    expect(() => isEmpty(123)).toThrow("Input harus string");
+    expect(() => isEmpty(0)).toThrow("Input harus string");
+    expect(() => isEmpty(true)).toThrow("Input harus string");
+    expect(() => isEmpty(false)).toThrow("Input harus string");
+    expect(() => isEmpty([])).toThrow("Input harus string");
+    expect(() => isEmpty({})).toThrow("Input harus string");
+    expect(() => isEmpty([1, 2])).toThrow("Input harus string");
+    expect(() => isEmpty({ a: 1 })).toThrow("Input harus string");
   });
 });
