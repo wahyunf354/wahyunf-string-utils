@@ -57,6 +57,7 @@ console.log(truncate("This is a long sentence", 10)); // "This is a ..."
 // Case Conversion
 console.log(camelCase("hello world")); // "helloWorld"
 console.log(snakeCase("Hello World")); // "hello_world"
+console.log(kebabCase("Hello World")); // "hello-world"
 ```
 
 ## 📚 Documentation
