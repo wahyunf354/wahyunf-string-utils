@@ -6,6 +6,14 @@
   "scripts": {
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wahyunf354/wahyunf-string-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wahyunf354/wahyunf-string-utils/issues"
+  },
+  "homepage": "https://github.com/wahyunf354/wahyunf-string-utils#readme",
   "devDependencies": {
     "jest": "^29.7.0"
   },
