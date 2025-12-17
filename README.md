@@ -14,6 +14,7 @@
 - **Truncate**: Memotong string panjang dengan ellipsis.
 - **CamelCase**: Mengubah string menjadi format camelCase.
 - **SnakeCase**: Mengubah string menjadi format snake_case.
+- **KebabCase**: Mengubah string menjadi format kebab-case
 
 ## 📦 Installation
 

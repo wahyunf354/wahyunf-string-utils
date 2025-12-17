@@ -161,3 +161,38 @@ snakeCase("hello world"); // 'hello_world'
 snakeCase("Hello World"); // 'hello_world'
 snakeCase("JAVA script"); // 'java_script'
 ```
+
+## `kebabCase(text)`
+
+Mengubah string menjadi format kebab-case.
+
+**Parameters:**
+
+- `text` (string, required): String yang akan diubah
+
+**Returns:**
+
+- (string): String dalam format kebab-case
+
+**Throws:**
+
+- `Error`: Jika input bukan string
+
+**Examples:**
+
+```javascript
+const { kebabCase } = require("@wahyunf/string-utils");
+
+kebabCase("hello world"); // 'hello-world'
+kebabCase("Hello World"); // 'hello-world'
+kebabCase("JAVA script"); // 'java-script'
+kebabCase("foo bar baz"); // 'foo-bar-baz'
+kebabCase("hello   world"); // 'hello-world' (multiple spaces become single hyphen)
+kebabCase(""); // ''
+kebabCase("hello"); // 'hello'
+kebabCase("HELLO"); // 'hello'
+
+// Error handling
+kebabCase(123); // Error: Input harus string
+kebabCase(null); // Error: Input harus string
+```

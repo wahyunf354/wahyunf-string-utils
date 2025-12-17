@@ -5,6 +5,7 @@ const {
   truncate,
   camelCase,
   snakeCase,
+  kebabCase,
 } = require("../src/index.js");
 
 describe("capitalize", () => {
@@ -186,5 +187,77 @@ describe("snakeCase", () => {
 
   test("should throw error if input is not string", () => {
     expect(() => snakeCase(123)).toThrow("Input harus string");
+  });
+});
+
+describe("kebabCase", () => {
+  test("should convert string to kebab-case", () => {
+    expect(kebabCase("hello world")).toBe("hello-world");
+    expect(kebabCase("Hello World")).toBe("hello-world");
+    expect(kebabCase("JAVA script")).toBe("java-script");
+    expect(kebabCase("FOO BAR")).toBe("foo-bar");
+  });
+
+  test("should handle string with multiple spaces", () => {
+    expect(kebabCase("hello   world")).toBe("hello-world");
+    expect(kebabCase("foo    bar    baz")).toBe("foo-bar-baz");
+    expect(kebabCase("a  b  c")).toBe("a-b-c");
+  });
+
+  test("should handle string with single space", () => {
+    expect(kebabCase("hello world")).toBe("hello-world");
+    expect(kebabCase("a b")).toBe("a-b");
+  });
+
+  test("should handle string with tabs and newlines", () => {
+    expect(kebabCase("hello\tworld")).toBe("hello-world");
+    expect(kebabCase("hello\nworld")).toBe("hello-world");
+    expect(kebabCase("hello\r\nworld")).toBe("hello-world");
+  });
+
+  test("should handle empty string", () => {
+    expect(kebabCase("")).toBe("");
+  });
+
+  test("should handle single character", () => {
+    expect(kebabCase("a")).toBe("a");
+    expect(kebabCase("A")).toBe("a");
+  });
+
+  test("should handle string without spaces", () => {
+    expect(kebabCase("hello")).toBe("hello");
+    expect(kebabCase("HELLO")).toBe("hello");
+    expect(kebabCase("HelloWorld")).toBe("helloworld");
+  });
+
+  test("should handle string with leading and trailing spaces", () => {
+    expect(kebabCase("  hello world  ")).toBe("-hello-world-");
+    expect(kebabCase(" hello world ")).toBe("-hello-world-");
+  });
+
+  test("should handle string with special characters", () => {
+    expect(kebabCase("foo bar baz")).toBe("foo-bar-baz");
+    expect(kebabCase("hello-world")).toBe("hello-world");
+    expect(kebabCase("hello_world")).toBe("hello_world");
+  });
+
+  test("should handle string with numbers", () => {
+    expect(kebabCase("hello 123 world")).toBe("hello-123-world");
+    expect(kebabCase("test 1 2 3")).toBe("test-1-2-3");
+  });
+
+  test("should handle string with mixed case", () => {
+    expect(kebabCase("Hello World Test")).toBe("hello-world-test");
+    expect(kebabCase("JavaScript React Vue")).toBe("javascript-react-vue");
+  });
+
+  test("should throw error for non-string input", () => {
+    expect(() => kebabCase(123)).toThrow("Input harus string");
+    expect(() => kebabCase(null)).toThrow("Input harus string");
+    expect(() => kebabCase(undefined)).toThrow("Input harus string");
+    expect(() => kebabCase([])).toThrow("Input harus string");
+    expect(() => kebabCase({})).toThrow("Input harus string");
+    expect(() => kebabCase(true)).toThrow("Input harus string");
+    expect(() => kebabCase(false)).toThrow("Input harus string");
   });
 });

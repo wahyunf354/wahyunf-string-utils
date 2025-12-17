@@ -74,6 +74,18 @@ function snakeCase(text) {
   return text.toLowerCase().replace(/\s+/g, "_");
 }
 
+/**
+ * Mengubah string menjadi kebab-case
+ * @param {string} text
+ * @returns {string}
+ */
+function kebabCase(text) {
+  if (typeof text !== "string") {
+    throw new Error("Input harus string");
+  }
+  return text.toLowerCase().replace(/\s+/g, "-");
+}
+
 module.exports = {
   capitalize,
   reverse,
@@ -81,4 +93,5 @@ module.exports = {
   truncate,
   camelCase,
   snakeCase,
+  kebabCase,
 };
