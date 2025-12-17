@@ -15,6 +15,8 @@
 - **CamelCase**: Mengubah string menjadi format camelCase.
 - **SnakeCase**: Mengubah string menjadi format snake_case.
 - **KebabCase**: Mengubah string menjadi format kebab-case
+- **TrimAll**: Menghapus spasi di awal dan akhir string dan mengganti spasi ganda menjadi satu spasi.
+- **Slugify**: Mengubah string menjadi format slug.
 
 ## 📦 Installation
 
@@ -58,6 +60,12 @@ console.log(truncate("This is a long sentence", 10)); // "This is a ..."
 console.log(camelCase("hello world")); // "helloWorld"
 console.log(snakeCase("Hello World")); // "hello_world"
 console.log(kebabCase("Hello World")); // "hello-world"
+
+// TrimAll
+console.log(trimAll("   hello world   ")); // "hello world"
+
+// Slugify
+console.log(slugify("Hello World")); // "hello-world"
 ```
 
 ## 📚 Documentation

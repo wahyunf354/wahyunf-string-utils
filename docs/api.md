@@ -196,3 +196,56 @@ kebabCase("HELLO"); // 'hello'
 kebabCase(123); // Error: Input harus string
 kebabCase(null); // Error: Input harus string
 ```
+
+## `trimAll(text)`
+
+Menghapus spasi di awal dan akhir, serta menormalkan multiple spaces menjadi 1 spasi.
+
+**Parameters:**
+
+- `text` (string, required): String yang akan diproses
+
+**Returns:**
+
+- (string): String yang sudah dibersihkan
+
+**Throws:**
+
+- `Error`: Jika input bukan string
+
+**Examples:**
+
+```javascript
+const { trimAll } = require("@wahyunf/string-utils");
+
+trimAll("  hello world  "); // 'hello world'
+trimAll("  hello   world  "); // 'hello world'
+trimAll("hello\tworld"); // 'hello world'
+```
+
+## `slugify(text)`
+
+Mengubah string menjadi format slug (huruf kecil, memisahkan kata dengan strip, dan menghapus karakter spesial).
+
+**Parameters:**
+
+- `text` (string, required): String yang akan diubah menjadi slug
+
+**Returns:**
+
+- (string): String dalam format slug
+
+**Throws:**
+
+- `Error`: Jika input bukan string
+
+**Examples:**
+
+```javascript
+const { slugify } = require("@wahyunf/string-utils");
+
+slugify("Hello World"); // 'hello-world'
+slugify("foo bar baz"); // 'foo-bar-baz'
+slugify("JAVA script"); // 'java-script'
+slugify("abc123"); // 'abc-123'
+```
